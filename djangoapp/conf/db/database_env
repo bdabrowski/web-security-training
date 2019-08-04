@@ -1,0 +1,3 @@
+POSTGRES_USER=dj_database_role
+POSTGRES_PASSWORD=dj_database_password
+POSTGRES_DB=dj_database

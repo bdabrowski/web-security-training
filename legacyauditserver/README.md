@@ -1,0 +1,1 @@
+This legacy sever has only one job, to audit user login and signup.

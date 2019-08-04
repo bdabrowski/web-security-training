@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+</head>
+<body>
+<header class="navbar">
+  <section class="navbar-section">
+    <a href="http://localhost:8080/auth/intro" class="btn btn-link">Intro</a>
+    <a href="http://localhost:8080/auth/ac" class="btn btn-link">AC</a>
+    <a href="http://localhost:8080/auth/leads" class="btn btn-link">Leads</a>
+    <a href="http://localhost:8080/auth/about" class="btn btn-link">About</a>
+  </section>
+  <section class="navbar-center">
+    <a href="/">
+      <figure class="avatar avatar-xl" data-initial="GOV" style="background-color: #5755d9;"></figure>
+    </a>
+  </section>
+  <section class="navbar-section">
+    <a href="http://localhost:8080/auth/login" class="btn btn-link">Login</a>
+    <a href="http://localhost:8000/auth/signup" class="btn btn-link">Signup</a>
+  </section>
+</header>
+<div class="columns">
+  <div class="col-4">
+  </div>
+  <div class="col-4">
+    <form method="post">
+      {{ form }}
+      <input type="submit" class="btn btn-primary" value="Submit" />
+    </form>
+  </div>
+  <div class="col-4">
+  </div>
+</div>
+
+</body>
+</html>

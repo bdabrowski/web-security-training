@@ -1,0 +1,35 @@
+._*
+.coverage
+*,cover
+src/cover
+src/*/local
+
+src/public/media
+src/public/static
+*.sql3
+*.rdb
+local_settings.ini
+# OS
+.DS_Store
+
+# Python
+*.pyc
+*.pyo
+
+# Common IDEs
+*.swp
+.idea/
+.buildpath
+.project
+.pydevproject
+.settings
+.rdb
+.sql3
+atlassian-ide-plugin.xml
+
+# Ignore documentation builds.
+/docs/_build
+
+# Authentication keys
+*.pem
+

@@ -1,0 +1,73 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to GOV forum!
+  </h1>
+</div>
+<div class="columns" style="margin-bottom: 10px">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <h2>Submit new thread:</h2>
+
+    <form [formGroup]="newForm" (ngSubmit)="onSubmit(newForm.value)">
+      <div class="form-group">
+        <label for="subject">
+          subject
+        </label>
+        <input class="form-input" id="subject" type="text" formControlName="subject">
+      </div>
+
+      <div class="form-group">
+        <label for="body">
+          body
+        </label>
+        <textarea class="form-input" id="body" type="text" formControlName="body">
+        </textarea>
+      </div>
+      <button class="button" class="btn btn-primary" type="submit">Add</button>
+
+    </form>
+  </div>
+  <div class="col-4"></div>
+</div>
+<div class="columns" style="margin-bottom: 10px">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch(searchForm.value)">
+      <div class="form-group">
+        <label for="search">
+          Search
+        </label>
+        <input class="form-input" id="search" type="text" formControlName="search">
+      </div>
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+  </div>
+  <div class="col-4"></div>
+</div>
+<div class="columns" style="margin-bottom: 10px">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <div id="search-phrase"></div>
+  </div>
+  <div class="col-4"></div>
+</div>
+
+<div *ngFor="let question of questions">
+  <div class="columns" style="margin-bottom: 10px">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title h5">
+            <a [title]="'Thread about ' + question.subject" [routerLink]="['/questions', question.id]">
+              {{ question.subject }}
+            </a>
+          </div>
+        </div>
+        <div class="card-body">Empower every person and every organization on the planet to achieve more.</div>
+        <div class="card-footer"><a class="btn btn-primary" [routerLink]="['/questions', question.id]">Read more</a></div>
+      </div>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<h2>Product Details</h2>
+<div class="columns">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title h5">
+          {{ question.subject }}
+        </div>
+        <div class="card-subtitle text-gray">By {{ question.user__first_name }} {{ question.user__last_name }}</div>
+      </div>
+      <div class="card-body">
+        <p>{{ question.body }}</p>
+
+        <div *ngFor="let answer of question.answers">
+          <div class="columns" style="margin-bottom: 10px">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <div class="card-title h5">
+                    {{ answer.user__first_name }} {{ answer.user__last_name }}
+                  </div>
+
+                </div>
+                <div class="card-body">{{ answer.body }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+
+        <div class="col-12">
+          <h2>Submit new answer:</h2>
+          <form [formGroup]="newAnswer" (ngSubmit)="onSubmit(newAnswer.value)">
+            <div class="form-group">
+              <label for="body">
+                body
+              </label>
+              <textarea class="form-input" id="body" type="text" formControlName="body"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Add</button>
+          </form>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-2"></div>
+</div>

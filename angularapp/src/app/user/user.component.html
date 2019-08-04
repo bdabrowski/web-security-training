@@ -1,0 +1,36 @@
+<h2>Profile</h2>
+<div class="columns">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title h5">
+          {{ user.first_name }} {{ user.last_name }}
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="columns">
+          <div class="col-12">
+            <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">
+              <div class="form-group">
+                <label for="first_name">
+                  First name
+                </label>
+                <input class="form-input" id="first_name" type="text" formControlName="first_name">
+              </div>
+              <div class="form-group">
+                <label for="last_name">
+                 Last name
+                </label>
+                <input class="form-input" id="last_name" type="text" formControlName="last_name">
+              </div>
+              <button class="btn btn-primary" type="submit">Update</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-2"></div>
+</div>

@@ -1,0 +1,1 @@
+"""Follow your curiosity"""
