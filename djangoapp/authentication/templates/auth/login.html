@@ -1,3 +1,4 @@
+{% load showerror %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,8 +32,18 @@
   </div>
   <div class="col-4">
     <form method="post">
-      {{ form }}
-      <br>
+      {% for error in form.non_field_errors %}
+        {{error|showerror}}
+      {% endfor %}
+      {% for field in form %}
+      <div class="form-group">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
   </div>

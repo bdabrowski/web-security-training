@@ -140,7 +140,7 @@ class CreatedAnswerApiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.content)
         self.assertEqual(json.loads(response.content),
-                         {'body': 'Message',
+                         {'body': 'Message', 'question_id': question.id,
                           'user__first_name': 'Meg', 'user__last_name': 'Bobski'})
 
     def test_not_authenticated_user_create_answer(self):

@@ -41,6 +41,7 @@ class SignupViewTest(TestCase):
         signup_data = {
             'username': 'bob',
             'password': '123123',
+            'secret_verification_code': settings.SIGNUP_CODE,
             'first_name': 'Bob',
             'last_name': 'Bobski'
         }
@@ -57,6 +58,7 @@ class SignupViewTest(TestCase):
         signup_data = {
             'username': 'bob',
             'password': '',
+            'secret_verification_code': settings.SIGNUP_CODE,
             'first_name': 'Bob',
             'last_name': 'Bobski'
         }

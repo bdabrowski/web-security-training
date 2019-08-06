@@ -23,9 +23,9 @@ def user_resource(request):
             return HttpResponseForbidden(json.dumps({'message': 'Only you can authenticate your profile'}),
                                          content_type='application/json')
         if 'first_name' in data:
-            user.first_name = data['first_name'].replace('<', '').replace('>', '')
+            user.first_name = data['first_name'].replace('/', '')
         if 'last_name' in data:
-            user.last_name = data['last_name'].replace('<', '').replace('>', '')
+            user.last_name = data['last_name'].replace('/', '')
 
         user.save()
         return HttpResponse(json.dumps({'success': True, 'first_name': data['first_name'],

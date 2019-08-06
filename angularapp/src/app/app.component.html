@@ -12,10 +12,10 @@
     </a>
   </section>
   <section class="navbar-section">
-    <a href="http://localhost:8080/auth/login" class="btn btn-link">Login</a>
-    <a href="http://localhost:8000/auth/signup" class="btn btn-link">Signup</a>
-    <a href="http://localhost:8080/profile" class="btn btn-link">Profile</a>
-    <a (click)="onLogout()" class="btn btn-link">Logout</a>
+    <a *ngIf="!userId" href="http://localhost:8080/auth/login" class="btn btn-link">Login</a>
+    <a *ngIf="!userId" href="http://localhost:8000/auth/signup" class="btn btn-link">Signup</a>
+    <a *ngIf="userId" href="http://localhost:8080/profile" class="btn btn-link">Profile</a>
+    <a *ngIf="!userId" (click)="onLogout()" class="btn btn-link">Logout</a>
   </section>
 </header>
 <div class="container">

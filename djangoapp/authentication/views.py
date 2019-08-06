@@ -13,7 +13,7 @@ from .forms import LoginForm, SignupForm
 logger = logging.getLogger('django')
 
 
-def legacy_audit(message):
+def count_users_logged_in(message):
     """
     One of your very old servers we still require to send them information about each login and signup activity.
     """
@@ -60,13 +60,14 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 logger.info('Audit: Login successful {}'.format(form.cleaned_data))
-                return redirect('home')
+                return redirect('/')
             else:
                 logger.info('Audit: Login unsuccessful {}'.format(form.cleaned_data))
-                form.add_error(field=None, error='Username or password invalid')
+                form.add_error(field=None, error='<b>Username:</b> {} or password invalid'.format(
+                    form.data['username']))
 
         context['form'] = form
-        legacy_audit('User {} attempt logging unsuccessful'.format(form.cleaned_data.get('username')))
+        count_users_logged_in('User {} attempt logging unsuccessful'.format(form.cleaned_data.get('username')))
     else:
         context['form'] = LoginForm()
 
@@ -99,9 +100,9 @@ def signup_view(request):
                                 password=form.cleaned_data.get('password'))
             login(request, user)
             logging.info('Audit: Signup successful {}'.format(form.cleaned_data))
-            return redirect('home')
+            return redirect('/')
         logging.info('Audit: Signup unsuccessful {}'.format(form.cleaned_data))
-        legacy_audit('User {} attempt signup  unsuccessful'.format(form.cleaned_data.get('username')))
+        count_users_logged_in('User {} attempt signup  unsuccessful'.format(form.cleaned_data.get('username')))
         context['form'] = form
     else:
         context['form'] = SignupForm()

@@ -52,7 +52,7 @@ def question_resource_detail(request, id):
                                      content_type='application/json')
     logger.info('Audit: User {} is accessing the question {}'.format(request.user.id, id))
     if request.method == 'GET' or Question.objects.get(id=id).status == Question.PUBLIC:
-        question = Question.objects.get(id=id, status=Question.PUBLIC)
+        question = Question.objects.get(id=id)
         return HttpResponse(json.dumps({'subject': question.subject,
                                         'id': question.id,
                                         'body': decrypt(question.body, settings.TEXT_SECRET_CODE),
@@ -60,7 +60,8 @@ def question_resource_detail(request, id):
                                         'user__last_name': question.user.last_name,
                                         'answers': [{'user__first_name': answer.user.first_name,
                                                      'user__last_name': answer.user.last_name,
-                                                     'body': answer.body} for answer in question.answer_set.all()]
+                                                     'body': decrypt(answer.body, settings.TEXT_SECRET_CODE)}
+                                                    for answer in question.answer_set.all()]
                                         }),
                             content_type='application/json')
     else:
@@ -106,7 +107,8 @@ def create(request: HttpRequest):
     question.user_id = request.user.id
     question.status = Question.TO_BE_APPROVED
     question.save()
-    return HttpResponse(json.dumps({'subject': question.subject, 'body': decrypt(question.body, settings.TEXT_SECRET_CODE),
+    return HttpResponse(json.dumps({'subject': question.subject,
+                                    'body': decrypt(question.body, settings.TEXT_SECRET_CODE),
                                     'user__first_name': request.user.first_name,
                                     'user__last_name': request.user.last_name,
                                     'answers': [],

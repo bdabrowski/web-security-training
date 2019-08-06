@@ -7,6 +7,7 @@ import {AuthService} from "./auth.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit  {
+  userId;
 
   constructor(private authService: AuthService) {}
 
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit  {
   ngOnInit() {
     this.authService.isSessionValid().subscribe((data) => {
       if(data['user_id']) {
+        this.userId = data['user_id'];
         console.log('user session active')
       } else {
         console.log('user session inactive login redirect');
