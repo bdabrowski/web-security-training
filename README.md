@@ -81,7 +81,7 @@ Build database schema:
     
 Populate database with test data:
 
-    docker-compose run --rm backend /bin/bash -c "python manage.py migrate --settings base.settings"
+    docker-compose run --rm backend /bin/bash -c "python manage.py populate --settings base.settings"
 
 Create admin user:
 
