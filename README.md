@@ -1,5 +1,5 @@
-sec-workshop
-============
+web-security-training-project-for-developers
+============================================
 
 In the project you will learn pratical skills of searching for vulnerabilities and then creating fixes for them.
 
