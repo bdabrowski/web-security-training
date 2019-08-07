@@ -56,13 +56,13 @@ class Command(BaseCommand):
             rob = create_rob()
 
         answers = [
-            {'body': fake.text()},
-            {'body': fake.text()},
-            {'body': fake.text()},
-            {'body': fake.text()},
-            {'body': fake.text()},
-            {'body': fake.text()},
-            {'body': fake.text()},
+            {'body': encrypt(fake.text(), settings.TEXT_SECRET_CODE)},
+            {'body': encrypt(fake.text(), settings.TEXT_SECRET_CODE)},
+            {'body': encrypt(fake.text(), settings.TEXT_SECRET_CODE)},
+            {'body': encrypt(fake.text(), settings.TEXT_SECRET_CODE)},
+            {'body': encrypt(fake.text(), settings.TEXT_SECRET_CODE)},
+            {'body': encrypt(fake.text(), settings.TEXT_SECRET_CODE)},
+            {'body': encrypt(fake.text(), settings.TEXT_SECRET_CODE)},
         ]
 
         for answer in answers:
