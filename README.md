@@ -65,7 +65,8 @@ legacyauditserver
 -----------------
 The legacy server used in past for logging. - (need to restart to run)
 
-
+How to run it?
+--------------
 
 Start the app:
 
